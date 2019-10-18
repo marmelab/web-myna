@@ -25,7 +25,7 @@ for (const api of config.apis) {
     onProxyReq: proxyReq =>
       proxyReq.setHeader("authorization", `Bearer ${api.token}`)
   };
-  app.use(`/${api.name}`, myna(api.name), proxy(proxyOptions));
+  app.use(`/${api.name}`, myna(api), proxy(proxyOptions));
 }
 
 app.listen(config.port, () => {
