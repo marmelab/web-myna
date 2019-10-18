@@ -48,7 +48,7 @@ export const buildHar = (req, res, body, apiCall, apiName) => {
     httpVersion: "HTTP/1.1",
     cookies: [],
     headers: buildFlattenedNameValueMap(res.headers),
-    content: body,
+    content: JSON.parse(body),
     redirectURL: "",
     headersSize: res.headers ? JSON.stringify(res.headers).length : 0,
     bodySize: JSON.stringify(body).length,
