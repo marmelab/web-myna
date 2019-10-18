@@ -7,9 +7,17 @@
   "author": "Alexis Janvier <alexis@marmelab.com> (https://www.marmelab.com)",
   "license": "MIT",
   "private": false,
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js"
+  },
   "dependencies": {
     "convict": "5.2.0",
     "express": "4.17.1",
     "http-proxy-middleware": "0.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.19.4",
+    "signale": "1.4.0"
   }
 }
