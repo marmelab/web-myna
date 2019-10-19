@@ -16,9 +16,7 @@
     "express": "4.17.1",
     "http-proxy-middleware": "0.20.0",
     "md5": "2.2.1",
-    "query-string": "6.8.3"
-  },
-  "devDependencies": {
+    "query-string": "6.8.3",
     "nodemon": "1.19.4",
     "signale": "1.4.0"
   }

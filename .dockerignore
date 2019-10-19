@@ -1,0 +1,7 @@
+node_modules
+.envrc
+.gitignore
+.git
+Makefile
+recordings
+apis.json
