@@ -3,6 +3,7 @@ import signale from "signale";
 import proxy from "http-proxy-middleware";
 
 import config from "./config.js";
+import { myna } from "./myna.js";
 
 if (!config.apis.length) {
   signale.error("There is no API to mock !");
@@ -24,7 +25,7 @@ for (const api of config.apis) {
     onProxyReq: proxyReq =>
       proxyReq.setHeader("authorization", `Bearer ${api.token}`)
   };
-  app.use(`/${api.name}`, proxy(proxyOptions));
+  app.use(`/${api.name}`, myna(api), proxy(proxyOptions));
 }
 
 app.listen(config.port, () => {
