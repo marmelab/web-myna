@@ -11,3 +11,7 @@ install: ## Install js deps
 
 start: ## Start server
 	yarn run start
+
+build-image: ## Build the application container image.
+	docker build -t web_myna --force-rm .
+
