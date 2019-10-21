@@ -44,9 +44,19 @@ const config = convict({
         default: null
       },
       token: {
-        doc: "Authorization token add in headers",
+        doc: "Value of the authorization token to add in http headers",
         format: String,
         default: null
+      },
+      tokenKey: {
+        doc: "Name of the http header for authentification",
+        format: String,
+        default: 'authorization'
+      },
+      tokenPrefix: {
+        doc: "Token prefix into the http header value",
+        format: String,
+        default: 'Bearer'
       }
     }
   },

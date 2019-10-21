@@ -22,6 +22,7 @@ ENV NODE_ENV production
 RUN mkdir /app
 COPY --from=builder ./app/node_modules /app/node_modules
 COPY ./src /app/src
+COPY ./package.json /app/package.json
 
 WORKDIR /app
 
