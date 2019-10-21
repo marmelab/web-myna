@@ -5,6 +5,8 @@ import path from "path";
 import md5 from "md5";
 
 import { buildHar } from "./harFactory.js";
+import config from "./config.js";
+import { MODE_RECORDER, MODE_PLAYER } from "./modes.js";
 
 export const myna = apiConfig => (req, res, next) => {
   const apiRecordingsPath = path.resolve(
@@ -12,7 +14,7 @@ export const myna = apiConfig => (req, res, next) => {
     "recordings",
     apiConfig.name
   );
-  if (!fs.existsSync(apiRecordingsPath)) {
+  if (!fs.existsSync(apiRecordingsPath) && config.mode === MODE_RECORDER) {
     fs.mkdirSync(apiRecordingsPath, parseInt("0744", 8));
   }
 
@@ -20,12 +22,17 @@ export const myna = apiConfig => (req, res, next) => {
     req.query
   )}`;
   const apiRecordPath = `${apiRecordingsPath}/${md5(apiCall)}.har`;
+
   if (fs.existsSync(apiRecordPath)) {
     signale.success("THE RECORD EXIST! PLAY IT");
     const record = fs.readFileSync(apiRecordPath, "utf8");
     const recordedCall = JSON.parse(record).entries[0];
 
     return res.json(recordedCall.response.content);
+  } else if (config.mode === MODE_PLAYER) {
+    return res
+      .status(421)
+      .json({ message: "This request has not been recorded by WebMyna" });
   }
 
   const { write: oldWrite, end: oldEnd } = res;
