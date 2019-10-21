@@ -56,6 +56,12 @@ const config = convict({
     default: "development",
     env: "NODE_ENV"
   },
+  mode: {
+    doc: "Recording mode in which WebMyna is started",
+    format: ["player", "recorder"],
+    default: "player",
+    env: "WEB_MYNA_MODE"
+  },
   port: {
     doc: "The port to bind.",
     format: "port",
