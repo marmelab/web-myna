@@ -15,7 +15,7 @@ start: ## Start server
 get-current-version: ## Set the current package version in the environment variable
 	$(eval WM_VERSION = $(shell node -p "require('./package.json').version"))
 
-image-build: 
+image-build:
 	docker build -t web_myna --force-rm .
 
 image-publish: get-current-version

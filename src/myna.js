@@ -21,6 +21,7 @@ export const myna = apiConfig => (req, res, next) => {
   const apiCall = `${apiConfig.url}${req.path}?${queryString.stringify(
     req.query
   )}`;
+  signale.info('Request on path', apiCall);
   const apiRecordPath = `${apiRecordingsPath}/${md5(apiCall)}.har`;
 
   if (fs.existsSync(apiRecordPath)) {
@@ -49,11 +50,14 @@ export const myna = apiConfig => (req, res, next) => {
     if (chunk) chunks.push(Buffer.from(chunk));
 
     const body = Buffer.concat(chunks).toString("utf8");
-    signale.info("We've got a body to record");
-    const harContent = buildHar(req, res, body, apiCall, apiConfig.name);
-    fs.writeFileSync(apiRecordPath, JSON.stringify(harContent), {
-      encoding: "utf8"
-    });
+    try {
+      const harContent = buildHar(req, res, body, apiCall, apiConfig.name);
+      fs.writeFileSync(apiRecordPath, JSON.stringify(harContent), {
+        encoding: "utf8"
+      });
+    } catch (error) {
+      signale.error(`Impossible to create .har from response to ${apiCall}`);
+    }
 
     oldEnd.apply(res, arguments);
   };
