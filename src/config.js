@@ -3,7 +3,8 @@ import path from "path";
 import { MODE_PLAYER } from "./modes.js";
 
 const processEnv = process.env;
-const isPlayerMode = processEnv["WEB_MYNA_MODE"] === MODE_PLAYER;
+const isPlayerMode =
+  processEnv["WEB_MYNA_MODE"] === MODE_PLAYER || !processEnv["WEB_MYNA_MODE"];
 
 convict.addFormat({
   name: "apis",
