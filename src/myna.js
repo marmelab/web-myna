@@ -15,13 +15,13 @@ export const myna = apiConfig => (req, res, next) => {
     apiConfig.name
   );
   if (!fs.existsSync(apiRecordingsPath) && config.mode === MODE_RECORDER) {
-    fs.mkdirSync(apiRecordingsPath, parseInt("0744", 8));
+    fs.mkdirSync(apiRecordingsPath, parseInt("0777", 8));
   }
 
   const apiCall = `${apiConfig.url}${req.path}?${queryString.stringify(
     req.query
   )}`;
-  signale.info('Request on path', apiCall);
+  signale.info("Request on path", apiCall);
   const apiRecordPath = `${apiRecordingsPath}/${md5(apiCall)}.har`;
 
   if (fs.existsSync(apiRecordPath)) {
@@ -56,6 +56,7 @@ export const myna = apiConfig => (req, res, next) => {
         encoding: "utf8"
       });
     } catch (error) {
+      signale.error(error);
       signale.error(`Impossible to create .har from response to ${apiCall}`);
     }
 

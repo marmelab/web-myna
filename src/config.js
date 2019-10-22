@@ -1,7 +1,9 @@
 import convict from "convict";
 import path from "path";
+import { MODE_PLAYER } from "./modes.js";
 
 const processEnv = process.env;
+const isPlayerMode = processEnv["WEB_MYNA_MODE"] === MODE_PLAYER;
 
 convict.addFormat({
   name: "apis",
@@ -12,9 +14,9 @@ convict.addFormat({
 
     apis.map((api, index) => {
       const tokenName = api.name ? `${api.name.toUpperCase()}_TOKEN` : null;
-      if (tokenName) {
+      if (tokenName || isPlayerMode) {
         const apiToken = processEnv[tokenName];
-        apis[index].token = processEnv[tokenName];
+        apis[index].token = isPlayerMode ? "webMynaPlayerToken" : apiToken;
       }
     });
 
@@ -51,12 +53,12 @@ const config = convict({
       tokenKey: {
         doc: "Name of the http header for authentification",
         format: String,
-        default: 'authorization'
+        default: "authorization"
       },
       tokenPrefix: {
         doc: "Token prefix into the http header value",
         format: String,
-        default: 'Bearer'
+        default: "Bearer"
       }
     }
   },
