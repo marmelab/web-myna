@@ -6,7 +6,6 @@
 
 For a long time, the idea of having a system to record API calls to use them in functional or e2e tests has been making its mark. I have tried several tools:
 
-* Polly avec son enregistrement REST. Mais Polly impose beaucoup de configuration, et laisse trop dépendant de la librairie dans les tests
 * [Polly.js](https://netflix.github.io/pollyjs/#/) with its REST recording. But Polly imposes a lot of configuration, and leaves too dependent on the library in the tests.
 * [RestBird](https://restbird.org/). The project is still a little young, the documentation still too incomplete. And above all, you can only launch the mock server on localhost, which is a problem within docker-composer.
 * [Http Toolkit](https://github.com/httptoolkit/mockttp). It is a paid system to enjoy all features, and it does not really work as an API server (mocked), but more as a request interceptor.
