@@ -19,11 +19,9 @@ image-build:
 	docker build -t web_myna --force-rm .
 
 image-publish: get-current-version
-	docker tag web_myna docker.pkg.github.com/alexisjanvier/web-myna/web_myna:${WM_VERSION}
-	docker tag web_myna docker.pkg.github.com/alexisjanvier/web-myna/web_myna:latest
+	docker tag web_myna alexisjanvier/web-myna:${WM_VERSION}
 	docker tag web_myna alexisjanvier/web-myna:latest
-	docker push docker.pkg.github.com/alexisjanvier/web-myna/web_myna:${WM_VERSION}
-	docker push docker.pkg.github.com/alexisjanvier/web-myna/web_myna:latest
+	docker push alexisjanvier/web-myna:${WM_VERSION}
 	docker push alexisjanvier/web-myna:latest
 
 publish: image-build image-publish ## Build then publish image to Github registry
