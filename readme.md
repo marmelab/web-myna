@@ -1,23 +1,63 @@
 # Web Myna
 
-Depuis longtemps, l'idée d'avoir un système permettant d'enregistrer des calls API pour s'en servir dans des tests fonctionnels ou e2e fait son trou. J'ai essayé plusieurs systèmes :
+![GitHub top language](https://img.shields.io/github/languages/top/marmelab/web-myna.svg) ![github contributors](https://img.shields.io/github/contributors/marmelab/web-myna.svg) ![web-myna.svg](https://img.shields.io/github/license/marmelab/web-myna.svg) ![prs welcome](https://img.shields.io/badge/prs-welcome-brightgreen.svg)
 
-* Polly avec son enregistrement REST. Mais Polly impose beaucoup de configuration, et laisse trop dépendant de la librairie dans les tests.
-* RestBird https://restbird.org/ . Le projet est encore un peu jeune, la documentation encore trop lacunaires. Et surtout, on ne peut pas lancer le serveur de mock que sur localhost, ce qui pose problème au sein d'un docker-compose.
-* Http Toolkit https://github.com/httptoolkit/mockttp. C'est un système payant pour profiter de toutres les features, et il ne fonctionne pas vraimant comme un serveur d'API (mocké), mais plus comme un intercepteur de requêtes.
-* Mock server http://www.mock-server.com/#what-is-mockserver . Sûrement le projet le plus tentant, mais qui semble vraiment trops compliqué !
+## Why ?
 
-Donc rien qui n'allait vraimant.
+For a long time, the idea of having a system to record API calls to use them in functional or e2e tests has been making its mark. I have tried several tools:
 
-Voila ce que j'attend d'un tel outil :
+* Polly avec son enregistrement REST. Mais Polly impose beaucoup de configuration, et laisse trop dépendant de la librairie dans les tests
+* [Polly.js](https://netflix.github.io/pollyjs/#/) with its REST recording. But Polly imposes a lot of configuration, and leaves too dependent on the library in the tests.
+* [RestBird](https://restbird.org/). The project is still a little young, the documentation still too incomplete. And above all, you can only launch the mock server on localhost, which is a problem within docker-composer.
+* [Http Toolkit](https://github.com/httptoolkit/mockttp). It is a paid system to enjoy all features, and it does not really work as an API server (mocked), but more as a request interceptor.
+* [Mock server](http://www.mock-server.com/#what-is-mockserver). Probably the most attractive project, but it seems really too complicated!
 
-* indépendant d'une technologie: l'idée, c'est de configurer l'application consomatrice de l'API pour pointer vers l'API recorder. C'est tout.
-* l'API recorder est configuré pour cette route d'API et qu'il a déjà enregistré la réponse, il la retourne
-* si l'API recorder est configuré pour cette route d'API et qu'il n'a pas d'enregistrement, il enregistre (ou pas - sur la ci => variable d'env gouvernant ce comportement)
-* Si l'API nécessite une autentification, c'est dans la configuration de l'API recorder que c'est indiqué, et il utilise des variable d'env pour ne pas enregistrer les secrets en dur. Jamais (attention au records du coup)
-* Toutes le conf de l'API recorder doit être isolé et versionnable (SQLite et json ?)
-* On doit pouvoir facilement refaire des enregistrement complêts lorsque l'API change. Idéalement, un fonctionnalité doit permettre de verifier un enregistrement specifique pour le comparrer à la vrai réponse de l'API
-* Eventuellement, avoir une notion d'équipe, c'est à dire d'associer des services mocker à des équipes de travail (genre en utilisant un token d'auth depuis les tests pour identifier une équipe ?)
-* Il faudra donc une interface de gestion du server API Recorder
-* Le système devra tourner aussi bien en local que dans un container docker. A vrai dire surtout dans un container docker
+So no project that really matched the need.
+
+## How ?
+
+This is what I expect from such a tool:
+
+* Technology-independent: the idea is to configure the API's consumer application to point to the recorder API. That's all.
+* The API recorder is configured for an API route and has already recorded the response: it returns it.
+* If the API recorder is configured for an API route but has no record: it records.
+* If the API requires authentication, this is indicated in the API recorder configuration, and it uses env variables to avoid hard recording secrets. 
+* All configuration of the recorder API must be isolated and versionable (SQLite and json?)
+* It should be easy to redo complete records when the API changes. Ideally, a feature should allow a specific record to be verified to compare it with the true API response
+* Possibly, have a notion of team, i.e. associate mocker services with work teams (like using an auth token from the tests to identify a team?)
+* It will therefore require an interface to manage the API Recorder server.
+* The system will have to run both locally and in a docker container. Actually, especially in a docker container
+
+## Installation
+
+```bash
+make install
+```
+
+## Usage
+
+```bash
+make start
+```
+
+## Contributing
+
+pull requests are welcome. for major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+```bash
+make test
+```
+
+To learn more about the contributions to this project, consult the [contribution guide](/.github/CONTRIBUTING.md).
+
+## Maintainer
+
+[![alexisjanvier](https://avatars1.githubusercontent.com/u/547706?s=96&amp;v=4)](https://github.com/alexisjanvier)     
+[Alexis Janvier](https://github.com/alexisjanvier) 
+
+## License
+
+web-myna is licensed under the [mit license](license), courtesy of [Arte]() and [Marmelab](http://marmelab.com).
 
