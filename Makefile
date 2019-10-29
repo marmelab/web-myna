@@ -12,6 +12,9 @@ install: ## Install js deps
 start: ## Start server
 	yarn run start
 
+record: ## Start server in recorder mode
+	WEB_MYNA_MODE=recorder yarn run start
+
 get-current-version: ## Set the current package version in the environment variable
 	$(eval WM_VERSION = $(shell node -p "require('./package.json').version"))
 
