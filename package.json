@@ -1,23 +1,51 @@
 {
-  "name": "web-myna",
-  "version": "0.0.4",
-  "description": "emulate your api for testing and development",
-  "main": "src/index.js",
-  "repository": "https://github.com/marmelab/web-myna",
-  "author": "Alexis Janvier <alexis@marmelab.com> (https://www.marmelab.com)",
-  "license": "MIT",
-  "private": false,
-  "type": "module",
-  "scripts": {
-    "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js"
-  },
-  "dependencies": {
-    "convict": "5.2.0",
-    "express": "4.17.1",
-    "http-proxy-middleware": "0.20.0",
-    "md5": "2.2.1",
-    "query-string": "6.8.3",
-    "nodemon": "1.19.4",
-    "signale": "1.4.0"
-  }
+    "name": "web-myna",
+    "version": "0.0.4",
+    "description": "emulate your api for testing and development",
+    "main": "src/index.js",
+    "repository": "https://github.com/marmelab/web-myna",
+    "author": "Alexis Janvier <alexis@marmelab.com> (https://www.marmelab.com)",
+    "license": "MIT",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
+        "lint:js": "eslint ./src --ext .js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "convict": "5.2.0",
+        "express": "4.17.1",
+        "http-proxy-middleware": "0.20.0",
+        "md5": "2.2.1",
+        "nodemon": "1.19.4",
+        "query-string": "6.8.3",
+        "signale": "1.4.0"
+    },
+    "devDependencies": {
+        "@babel/core": "7.6.4",
+        "@babel/preset-env": "7.6.3",
+        "babel-eslint": "10.0.3",
+        "babel-jest": "24.9.0",
+        "eslint": "6.6.0",
+        "eslint-config-prettier": "6.5.0",
+        "eslint-plugin-jest": "23.0.2",
+        "eslint-plugin-prettier": "3.1.1",
+        "husky": "3.0.9",
+        "jest": "24.9.0",
+        "lint-staged": "9.4.2",
+        "prettier": "1.18.2"
+    }
 }
