@@ -15,6 +15,12 @@ start: ## Start server
 record: ## Start server in recorder mode
 	WEB_MYNA_MODE=recorder yarn run start
 
+test: ## Run unit test
+	yarn run test
+
+test-watch: ## Run unit test in watch mode
+	yarn run test:watch
+
 get-current-version: ## Set the current package version in the environment variable
 	$(eval WM_VERSION = $(shell node -p "require('./package.json').version"))
 

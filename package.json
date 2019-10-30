@@ -9,6 +9,8 @@
     "private": false,
     "type": "module",
     "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
         "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
         "lint:js": "eslint ./src --ext .js"
     },
