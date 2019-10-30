@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>References · Web Myna</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Functions"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="References · Web Myna"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.marmelab.com/web-myna/"/><meta property="og:description" content="## Functions"/><meta property="og:image" content="https://www.marmelab.com/web-myna/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://www.marmelab.com/web-myna/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/web-myna/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/web-myna/js/scrollSpy.js"></script><link rel="stylesheet" href="/web-myna/css/main.css"/><script src="/web-myna/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/web-myna/"><img class="logo" src="/web-myna/img/logoMarmelabWhite.png" alt="Web Myna"/><h2 class="headerTitleWithLogo">Web Myna</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/web-myna/docs/references" target="_self">Documentation</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>References</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">References</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/web-myna/docs/references">References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">References</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="functions"></a><a href="#functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions</h2>
+<dl>
+<dt><a href="#transformBinaryToUtf8">transformBinaryToUtf8(value)</a> ⇒ <code>string</code></dt>
+<dd><p>Transform a Binay (Buffer) into string</p>
+</dd>
+<dt><a href="#buildFlattenedNameValueMap">buildFlattenedNameValueMap(obj)</a> ⇒ <code>Array</code></dt>
+<dd><p>Transform on object param/value in an array withe name from param and value from value</p>
+</dd>
+<dt><a href="#buildHar">buildHar(req, res, body, apiCall, apiName)</a> ⇒ <code>object</code></dt>
+<dd><p>Prepare a json object ready to be transform in a valid .har file</p>
+</dd>
+<dt><a href="#myna">myna(apiConfig)</a> ⇒ <code>function</code></dt>
+<dd><p>Description of the WebMyna Middleware.</p>
+</dd>
+</dl>
+<p><a name="transformBinaryToUtf8"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="transformbinarytoutf8value-code-string-code"></a><a href="#transformbinarytoutf8value-code-string-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>transformBinaryToUtf8(value) ⇒ <code>string</code></h2>
+<p>Transform a Binay (Buffer) into string</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: <code>string</code> - - The returned binary convert in string</p>
+<table>
+<thead>
+<tr><th>Param</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>value</td><td><code>Buffer</code></td><td>The binary to convert</td></tr>
+</tbody>
+</table>
+<p><a name="buildFlattenedNameValueMap"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="buildflattenednamevaluemapobj-code-array-code"></a><a href="#buildflattenednamevaluemapobj-code-array-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>buildFlattenedNameValueMap(obj) ⇒ <code>Array</code></h2>
+<p>Transform on object param/value in an array withe name from param and value from value</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: <code>Array</code> - - The transformed objet</p>
+<table>
+<thead>
+<tr><th>Param</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>obj</td><td><code>object</code></td><td>The object to transform</td></tr>
+</tbody>
+</table>
+<p><a name="buildHar"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="buildharreq-res-body-apicall-apiname-code-object-code"></a><a href="#buildharreq-res-body-apicall-apiname-code-object-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>buildHar(req, res, body, apiCall, apiName) ⇒ <code>object</code></h2>
+<p>Prepare a json object ready to be transform in a valid .har file</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: <code>object</code> - - The json object used to create the final .har file</p>
+<table>
+<thead>
+<tr><th>Param</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>req</td><td><code>object</code></td><td>the express request used for the request</td></tr>
+<tr><td>res</td><td><code>object</code></td><td>The express response return by the reverse proxy</td></tr>
+<tr><td>body</td><td><code>object</code></td><td>The body json response return by the reverse proxy</td></tr>
+<tr><td>apiCall</td><td><code>string</code></td><td>The url used for api call</td></tr>
+<tr><td>apiName</td><td><code>string</code></td><td>The mocked api name</td></tr>
+</tbody>
+</table>
+<p><a name="myna"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="mynaapiconfig-code-function-code"></a><a href="#mynaapiconfig-code-function-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>myna(apiConfig) ⇒ <code>function</code></h2>
+<p>Description of the WebMyna Middleware.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: <code>function</code> - - The curried middleware</p>
+<table>
+<thead>
+<tr><th>Param</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>apiConfig</td><td><code>object</code></td><td>Configuration for the current mocked api</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#functions">Functions</a></li><li><a href="#transformbinarytoutf8value-string">transformBinaryToUtf8(value) ⇒ string</a></li><li><a href="#buildflattenednamevaluemapobj-array">buildFlattenedNameValueMap(obj) ⇒ Array</a></li><li><a href="#buildharreq-res-body-apicall-apiname-object">buildHar(req, res, body, apiCall, apiName) ⇒ object</a></li><li><a href="#mynaapiconfig-function">myna(apiConfig) ⇒ function</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/web-myna/" class="nav-home"><img src="/web-myna/img/logo.png" alt="Web Myna" width="66" height="58"/></a><div><h5>Docs</h5><a href="/web-myna/docs/en/references.html">Api references</a></div><div><h5>Community</h5><a href="https://twitter.com/marmelab" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a class="github-button" href="https://github.com/marmelab/web-myna" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/marmelab" class="twitter-follow-button">Follow @marmelab</a></div></div></section><section class="copyright">Copyright © 2019 Marmelab</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script src="http://localhost:undefined/livereload.js"></script></body></html>
