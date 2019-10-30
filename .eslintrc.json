@@ -1,0 +1,25 @@
+{
+    "parser": "babel-eslint",
+    "plugins": [
+        "prettier",
+        "jest"
+    ],
+    "extends": [
+        "prettier",
+        "prettier/babel",
+        "plugin:jest/recommended"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "array-bracket-spacing": [
+            "error",
+            "never"
+        ]
+    }
+}
