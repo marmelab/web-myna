@@ -1,3 +1,10 @@
+/**
+ * Transform a Binay (Buffer) into string
+ *
+ * @function
+ * @param {Buffer} value - The binary to convert
+ * @returns {string} - The returned binary convert in string
+ */
 export const transformBinaryToUtf8 = value => {
     if (value === undefined || value === null) {
         return value;
@@ -6,6 +13,13 @@ export const transformBinaryToUtf8 = value => {
     return Buffer.from(String(value), 'binary').toString('utf8');
 };
 
+/**
+ * Transform on object param/value in an array withe name from param and value from value
+ *
+ * @function
+ * @param {object} obj - The object to transform
+ * @returns {Array} - The transformed objet
+ */
 export const buildFlattenedNameValueMap = obj => {
     if (!obj) {
         return [];
@@ -29,6 +43,17 @@ export const buildFlattenedNameValueMap = obj => {
     }, []);
 };
 
+/**
+ * Prepare a json object ready to be transform in a valid .har file
+ *
+ * @function
+ * @param {object} req - the express request used for the request
+ * @param {object} res - The express response return by the reverse proxy
+ * @param {object} body - The body json response return by the reverse proxy
+ * @param {string} apiCall - The url used for api call
+ * @param {string} apiName - The mocked api name
+ * @returns {object} - The json object used to create the final .har file
+ */
 export const buildHar = (req, res, body, apiCall, apiName) => {
     const harRequest = {
         method: req.method,

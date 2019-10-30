@@ -2,12 +2,14 @@
     "parser": "babel-eslint",
     "plugins": [
         "prettier",
-        "jest"
+        "jest",
+        "jsdoc"
     ],
     "extends": [
         "prettier",
         "prettier/babel",
-        "plugin:jest/recommended"
+        "plugin:jest/recommended",
+        "plugin:jsdoc/recommended"
     ],
     "rules": {
         "prettier/prettier": [
