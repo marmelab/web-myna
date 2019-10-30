@@ -8,6 +8,13 @@ import { buildHar } from './harFactory.js';
 import config from './config.js';
 import { MODE_RECORDER, MODE_PLAYER } from './modes.js';
 
+/**
+ * Description of the WebMyna Middleware.
+ *
+ * @function
+ * @param {object} apiConfig - Configuration for the current mocked api
+ * @returns {Function} - The curried middleware
+ */
 export const myna = apiConfig => (req, res, next) => {
     const apiRecordingsPath = path.resolve(path.dirname(''), 'recordings', apiConfig.name);
     if (!fs.existsSync(apiRecordingsPath) && config.mode === MODE_RECORDER) {
