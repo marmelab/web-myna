@@ -25,20 +25,16 @@ const siteConfig = {
     tagline: 'Record then emulate your api.s for testing and development',
     url: 'https://www.marmelab.com', // Your website URL
     baseUrl: '/web-myna/', // Base URL for your project */
-    // For github.io type URLs, you would set the url and baseUrl like:
-    //   url: 'https://facebook.github.io',
-    //   baseUrl: '/test-site/',
-
-    // Used for publishing and more
     projectName: 'web-myna',
     organizationName: 'marmelab',
+    cname: 'www.marmelab.com',
     // For top-level user or org sites, the organization is still the same.
     // e.g., for the https://JoelMarcey.github.io site, it would be set like...
     //   organizationName: 'JoelMarcey'
 
     // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
-        { doc: 'references', label: 'Documentation' },
+        {doc: 'references', label: 'Documentation'},
         // { doc: 'doc4', label: 'API' },
         // { page: 'help', label: 'Help' },
         // { blog: false, label: 'Blog' },
