@@ -20,6 +20,9 @@ test: ## Run unit test
 
 test-watch: ## Run unit test in watch mode
 	yarn run test:watch
+	
+build: ## Build js code in a single file
+	yarn run build
 
 get-current-version: ## Set the current package version in the environment variable
 	$(eval WM_VERSION = $(shell node -p "require('./package.json').version"))

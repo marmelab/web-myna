@@ -13,7 +13,8 @@
         "test:watch": "jest --watch",
         "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
         "lint:js": "eslint ./src --ext .js",
-        "jsdoc": "jsdoc2md src/**/*.js > ./docs/references.md"
+        "jsdoc": "jsdoc2md src/**/*.js > ./docs/references.md",
+        "build": "parcel build src/index.js --target node --bundle-node-modules --no-source-maps"
     },
     "husky": {
         "hooks": {
@@ -50,6 +51,7 @@
         "jest": "24.9.0",
         "jsdoc-to-markdown": "5.0.2",
         "lint-staged": "9.4.2",
+        "parcel-bundler": "1.12.4",
         "prettier": "1.18.2"
     }
 }
