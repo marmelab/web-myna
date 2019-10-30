@@ -13,7 +13,7 @@
         "test:watch": "jest --watch",
         "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
         "lint:js": "eslint ./src --ext .js",
-        "jsdoc": "jsdoc2md src/**/*.js > ./documentation/references.md"
+        "jsdoc": "jsdoc2md src/**/*.js > ./docs/references.md"
     },
     "husky": {
         "hooks": {
@@ -40,6 +40,7 @@
         "@babel/preset-env": "7.6.3",
         "babel-eslint": "10.0.3",
         "babel-jest": "24.9.0",
+        "docusaurus-init": "1.14.0",
         "eslint": "6.6.0",
         "eslint-config-prettier": "6.5.0",
         "eslint-plugin-jest": "23.0.2",

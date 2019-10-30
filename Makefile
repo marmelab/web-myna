@@ -38,3 +38,5 @@ publish: image-build image-publish ## Build then publish image to Github registr
 documentation: ## Generate documentation from JsDoc
 	yarn run jsdoc
 
+run-documentation:
+	cd website && yarn start
