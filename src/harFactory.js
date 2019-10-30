@@ -1,6 +1,7 @@
 /**
  * Transform a Binay (Buffer) into string
  *
+ * @function
  * @param {Buffer} value - The binary to convert
  * @returns {string} - The returned binary convert in string
  */
@@ -15,6 +16,7 @@ export const transformBinaryToUtf8 = value => {
 /**
  * Transform on object param/value in an array withe name from param and value from value
  *
+ * @function
  * @param {object} obj - The object to transform
  * @returns {Array} - The transformed objet
  */
@@ -44,6 +46,7 @@ export const buildFlattenedNameValueMap = obj => {
 /**
  * Prepare a json object ready to be transform in a valid .har file
  *
+ * @function
  * @param {object} req - the express request used for the request
  * @param {object} res - The express response return by the reverse proxy
  * @param {object} body - The body json response return by the reverse proxy

@@ -35,5 +35,6 @@ image-publish: get-current-version
 
 publish: image-build image-publish ## Build then publish image to Github registry
 
-
+documentation: ## Generate documentation from JsDoc
+	yarn run jsdoc
 
