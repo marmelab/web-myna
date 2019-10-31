@@ -1,9 +1,13 @@
+import signale from 'signale';
 import convict from 'convict';
-import path from 'path';
+import rc from 'rc';
+
 import { MODE_PLAYER } from './modes.js';
 
 const processEnv = process.env;
 const isPlayerMode = processEnv['WEB_MYNA_MODE'] === MODE_PLAYER || !processEnv['WEB_MYNA_MODE'];
+
+const globalConfiguration = rc('webmyna', { apis: [], recordingsPath: null });
 
 convict.addFormat({
     name: 'apis',
@@ -73,16 +77,21 @@ const config = convict({
         default: 'player',
         env: 'WEB_MYNA_MODE',
     },
-    port: {
-        doc: 'The port to bind.',
+    proxyPort: {
+        doc: 'The proxy port to bind.',
         format: 'port',
-        default: 8080,
-        env: 'PORT',
-        arg: 'port',
+        default: globalConfiguration.proxyPort || 8080,
+        env: 'WEB_MYNA_PROXY_PORT',
+    },
+    recordingsPath: {
+        doc: 'path to the main recording folder',
+        format: String,
+        default: globalConfiguration.recordingsPath,
+        env: 'WEB_MYNA_RECORDINGS_PATH',
     },
 });
 
-config.loadFile(path.resolve(path.dirname(''), 'apis.json'));
+config.load({ apis: globalConfiguration.apis });
 config.validate({ allowed: 'strict' });
 
 export default config.getProperties();

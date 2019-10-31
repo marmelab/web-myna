@@ -34,6 +34,7 @@
         "md5": "2.2.1",
         "nodemon": "1.19.4",
         "query-string": "6.8.3",
+        "rc": "1.2.8",
         "signale": "1.4.0"
     },
     "devDependencies": {

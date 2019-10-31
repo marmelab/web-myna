@@ -27,6 +27,6 @@ for (const api of config.apis) {
     app.use(`/${api.name}`, myna(api), proxy(proxyOptions));
 }
 
-app.listen(config.port, () => {
-    signale.info(`Web Myna is starded on port ${config.port} in environment ${config.env}`);
+app.listen(config.proxyPort, () => {
+    signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
 });
