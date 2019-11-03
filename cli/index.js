@@ -13,8 +13,8 @@ const globalConfiguration = rc('webmynat');
 
 if (!globalConfiguration.config) {
     const run = async () => {
-        const locations = await questions.askConfigurationLocation();
-        console.log(locations);
+        const configurationLocation = await questions.askConfigurationLocation();
+        console.log(configurationLocation);
     };
 
     run();

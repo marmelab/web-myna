@@ -18,6 +18,19 @@ export const questions = {
                 ],
                 default: '~/.webmynarc',
             },
+            {
+                type: 'input',
+                name: 'recordingPath',
+                message: `Where do you want to store the WebMyna recordings?`,
+                default: answers => answers.configPath.replace('.webmynarc', '.webmyna'),
+                validate: function(value) {
+                    if (value.length) {
+                        return true;
+                    } else {
+                        return 'Please, set a folder path';
+                    }
+                },
+            },
         ];
         return inquirer.prompt(locations);
     },
