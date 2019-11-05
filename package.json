@@ -44,15 +44,15 @@
         "signale": "1.4.0"
     },
     "devDependencies": {
-        "@babel/core": "7.6.4",
-        "@babel/preset-env": "7.6.3",
+        "@babel/core": "7.7.0",
+        "@babel/preset-env": "7.7.1",
         "babel-eslint": "10.0.3",
         "babel-jest": "24.9.0",
         "docusaurus-init": "1.14.0",
         "eslint": "6.6.0",
         "eslint-config-prettier": "6.5.0",
         "eslint-plugin-jest": "23.0.2",
-        "eslint-plugin-jsdoc": "16.1.1",
+        "eslint-plugin-jsdoc": "17.1.0",
         "eslint-plugin-prettier": "3.1.1",
         "husky": "3.0.9",
         "jest": "24.9.0",
