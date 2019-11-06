@@ -22,7 +22,8 @@ for (const api of config.apis) {
         target: api.url,
         ignorePath: false,
         pathRewrite: path => path.replace(`/${api.name}`, ''),
-        onProxyReq: proxyReq => proxyReq.setHeader('authorization', `${api.tokenPrefix || 'Bearer'} ${api.token}`),
+        onProxyReq: proxyReq =>
+            proxyReq.setHeader(`${api.tokenKey || 'authorization'}`, `${api.tokenPrefix || 'Bearer'} ${api.token}`),
     };
     app.use(`/${api.name}`, myna(api), proxy(proxyOptions));
 }
