@@ -4,6 +4,7 @@ import figlet from 'figlet';
 import rc from 'rc';
 import signale from 'signale';
 import boxen from 'boxen';
+import fs from 'fs';
 
 import { questions } from './questions.js';
 
@@ -29,7 +30,7 @@ Optionally, if the API needs an authentication token
 
 clearWn();
 
-const globalConfiguration = rc('webmynat');
+const globalConfiguration = rc('webmyna');
 
 if (!globalConfiguration.config) {
     const run = async () => {
@@ -52,20 +53,29 @@ if (!globalConfiguration.config) {
             configureApi = apiConfiguration.continue;
         }
 
+        clearWn();
         const finalConfiguration = {
             recordingPath: configurationLocation.recordingPath,
             apis,
         };
-        console.log('On va enregistrer le fichier ', configurationLocation.configPath, finalConfiguration);
+        try {
+            if (!fs.existsSync(configurationLocation.recordingPath)) {
+                fs.mkdirSync(configurationLocation.recordingPath);
+            }
+            fs.writeFileSync(configurationLocation.configPath, JSON.stringify(finalConfiguration, null, 2), {
+                encoding: 'utf8',
+            });
+            signale.log(
+                'The configuration of Web Myna is completed and saved. You can restart it, everything should work!',
+            );
+        } catch (error) {
+            signale.log(`Error when saving your configuration of the ${configurationLocation.configPath} file.`);
+            signale.error(error);
+        }
+        process.exit();
     };
 
     run();
 } else {
     console.log('START WEBMYNA');
 }
-// CHECK IF CONFIG FILE EXIST
-// IF NOT ASK TO CREATE ONE WITH LOCATION CHOICE
-// THEN ASK THE DEFAULT RECORDINGS FOLDER PATH
-// THEN ASK TO CONFIGURE AT LEAST ONE API
-// SHOW RECAP FOR CONFIRMATION
-// THEN START WEBMYNA IN REAL

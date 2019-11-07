@@ -59,7 +59,7 @@ export const questions = {
                     if (value.length && value.match(urlRegex) && !value.endsWith('/')) {
                         return true;
                     } else {
-                        return 'Please set a valid url';
+                        return 'Please set a valid url, without final slash';
                     }
                 },
             },
