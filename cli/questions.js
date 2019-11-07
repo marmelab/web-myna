@@ -20,7 +20,7 @@ export const questions = {
             },
             {
                 type: 'input',
-                name: 'recordingPath',
+                name: 'recordingsPath',
                 message: `Where do you want to store the WebMyna recordings?`,
                 default: answers => answers.configPath.replace('.webmynarc', '.webmyna'),
                 validate: function(value) {

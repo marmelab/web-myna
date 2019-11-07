@@ -3,6 +3,14 @@
     "version": "0.0.4",
     "description": "emulate your api for testing and development",
     "main": "src/index.js",
+    "bin": {
+        "webmyna": "dist/index.js"
+    },
+    "files": [
+        "bin/",
+        "docs/",
+        "src/"
+    ],
     "repository": "https://github.com/marmelab/web-myna",
     "author": "Alexis Janvier <alexis@marmelab.com> (https://www.marmelab.com)",
     "license": "MIT",
@@ -14,7 +22,7 @@
         "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
         "lint:js": "eslint ./src --ext .js",
         "jsdoc": "jsdoc2md src/**/*.js > ./docs/references.md",
-        "build": "parcel build src/index.js --target node --bundle-node-modules --no-source-maps"
+        "build": "parcel build cli/index.js --target node  --no-source-maps"
     },
     "husky": {
         "hooks": {
@@ -60,6 +68,7 @@
         "jsdoc-to-markdown": "5.0.2",
         "lint-staged": "9.4.2",
         "parcel-bundler": "1.12.4",
+        "parcel-plugin-shebang": "1.2.8",
         "prettier": "1.18.2"
     }
 }
