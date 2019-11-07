@@ -41,50 +41,51 @@ export const questions = {
             {
                 type: 'input',
                 name: 'name',
-                message: 'Quel nom donner au endpoint ?',
+                message: 'What is the name of the API? (in slug format)',
                 validate: function(value) {
-                    if (value.length) {
+                    if (value.length && value.match(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/)) {
                         return true;
                     } else {
-                        return 'Please, set an api name';
+                        return 'Please, set an api name slugified';
                     }
                 },
             },
             {
                 type: 'input',
                 name: 'url',
-                message: "Quelle est l'url de rediraction vers l'api ?",
+                message: 'What is the basic url of the real API? (without slash at the end)',
                 validate: function(value) {
-                    if (value.length) {
+                    const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+                    if (value.length && value.match(urlRegex) && !value.endsWith('/')) {
                         return true;
                     } else {
-                        return 'Please set an url';
+                        return 'Please set a valid url';
                     }
                 },
             },
             {
                 type: 'confirm',
                 name: 'needToken',
-                message: "L'api a-t-elle besoin d'un token d'authentification ?",
+                message: 'Does the API need an authentication token?',
             },
             {
                 type: 'input',
                 name: 'tokenKey',
-                message: "Quel est le nom du header http portant le token d'authentification ?",
+                message: 'What is the name of the http header with the authentication token?',
                 default: 'authorization',
                 when: value => value.needToken,
             },
             {
                 type: 'input',
                 name: 'tokenPrefix',
-                message: 'Le token doit-il être préfixer dans le header ?',
+                message: 'Should the token be prefixed in the header?',
                 default: 'Bearer',
                 when: value => value.needToken,
             },
             {
                 type: 'confirm',
                 name: 'continue',
-                message: 'Souhaitez-vous configurer une autre api ?',
+                message: 'Do you want to configure another API?',
             },
         ];
         return inquirer.prompt(locations);

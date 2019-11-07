@@ -3,12 +3,28 @@ import clear from 'clear';
 import figlet from 'figlet';
 import rc from 'rc';
 import signale from 'signale';
+import boxen from 'boxen';
 
 import { questions } from './questions.js';
 
 const clearWn = () => {
     clear();
-    console.log(chalk.yellow(figlet.textSync('Web Myna', { horizontalLayout: 'full' })));
+    signale.log(chalk.yellow(figlet.textSync('Web Myna', { horizontalLayout: 'full' })));
+};
+
+const displayApiHelp = () => {
+    const help = `You must now configure at least one API.
+ 
+To do this, you will need to provide following informations:
+ * the name of the API in slug format. For example "rick-and-morty" to call the API on http://localhost/rick-and-morty
+ * the real basic url of the API. For example, https://rickandmortyapi.com/api (without final slash)
+
+Optionally, if the API needs an authentication token
+ * the name of the http header to add
+ * the possible prefix to add to the token
+    `;
+    clearWn();
+    signale.log(boxen(help, { padding: 1 }));
 };
 
 clearWn();
@@ -18,13 +34,13 @@ const globalConfiguration = rc('webmynat');
 if (!globalConfiguration.config) {
     const run = async () => {
         const configurationLocation = await questions.askConfigurationLocation();
-        clearWn();
-        signale.log('Vous devez maintenant configurer au moins une API');
+
+        displayApiHelp();
         let apis = [];
         let configureApi = true;
         while (configureApi) {
             if (apis.length) {
-                signale.log(`Vous avez déja ${apis.length} api.s configurée.s`);
+                signale.log(`You already have ${apis.length} api.s configured`);
             }
             const apiConfiguration = await questions.askApiConfiguration();
             apis.push({
@@ -33,9 +49,9 @@ if (!globalConfiguration.config) {
                 tokenKey: apiConfiguration.tokenKey || 'authorization',
                 tokenPrefix: apiConfiguration.tokenPrefix || 'Bearer',
             });
-            clearWn();
             configureApi = apiConfiguration.continue;
         }
+
         const finalConfiguration = {
             recordingPath: configurationLocation.recordingPath,
             apis,
