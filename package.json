@@ -1,6 +1,6 @@
 {
     "name": "web-myna",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "emulate your api for testing and development",
     "main": "src/index.js",
     "bin": {
