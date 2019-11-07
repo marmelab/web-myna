@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
@@ -7,6 +8,8 @@ import boxen from 'boxen';
 import fs from 'fs';
 
 import { questions } from './questions.js';
+import config from '../src/config.js';
+import { app } from '../src/app.js';
 
 const clearWn = () => {
     clear();
@@ -55,7 +58,7 @@ if (!globalConfiguration.config) {
 
         clearWn();
         const finalConfiguration = {
-            recordingPath: configurationLocation.recordingPath,
+            recordingsPath: configurationLocation.recordingsPath,
             apis,
         };
         try {
@@ -77,5 +80,13 @@ if (!globalConfiguration.config) {
 
     run();
 } else {
-    console.log('START WEBMYNA');
+    app.listen(config.proxyPort, () => {
+        signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
+    });
 }
+
+process.on('SIGINT', function() {
+    clear();
+    signale.log(chalk.yellow(figlet.textSync('Bye', { horizontalLayout: 'full' })));
+    process.exit(1);
+});

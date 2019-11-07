@@ -17,7 +17,8 @@ convict.addFormat({
         }
 
         apis.map((api, index) => {
-            const tokenName = api.name ? `${api.name.toUpperCase()}_TOKEN` : null;
+            const tokenName = api.name ? `${api.name.toUpperCase().replace(/-/g, '_')}_TOKEN` : null;
+            signale.debug(tokenName);
             if (tokenName || isPlayerMode) {
                 const apiToken = processEnv[tokenName];
                 apis[index].token = isPlayerMode ? 'webMynaPlayerToken' : apiToken;
