@@ -22,7 +22,7 @@
         "start": "nodemon --exec \"node --experimental-modules\" --watch src src/index.js",
         "lint:js": "eslint ./src --ext .js",
         "jsdoc": "jsdoc2md src/**/*.js > ./docs/references.md",
-        "build": "parcel build cli/index.js --target node  --no-source-maps"
+        "build": "parcel build cli/index.js --target node  --no-source-maps && git add dist"
     },
     "husky": {
         "hooks": {

@@ -39,7 +39,10 @@ image-publish: get-current-version
 	docker push alexisjanvier/web-myna:${WM_VERSION}
 	docker push alexisjanvier/web-myna:latest
 
-publish: image-build image-publish ## Build then publish image to Github registry
+publish-docker: image-build image-publish ## Build then publish image to Github registry
+
+publish-npm: build ## Build cli then publish new version on npm (nedd np install on global)
+	np
 
 documentation: ## Generate documentation from JsDoc
 	yarn run jsdoc
