@@ -1,14 +1,8 @@
 import express from 'express';
-import signale from 'signale';
 import proxy from 'http-proxy-middleware';
 
 import config from './config.js';
 import { myna } from './myna.js';
-
-if (!config.apis.length) {
-    signale.error('There is no API to mock !');
-    throw new Error('Thers is no API to mock');
-}
 
 export const app = express();
 
