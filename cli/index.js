@@ -62,8 +62,8 @@ if (!globalConfiguration.config) {
             apis,
         };
         try {
-            if (!fs.existsSync(configurationLocation.recordingPath)) {
-                fs.mkdirSync(configurationLocation.recordingPath);
+            if (!fs.existsSync(configurationLocation.recordingsPath)) {
+                fs.mkdirSync(configurationLocation.recordingsPath);
             }
             fs.writeFileSync(configurationLocation.configPath, JSON.stringify(finalConfiguration, null, 2), {
                 encoding: 'utf8',
