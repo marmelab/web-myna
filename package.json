@@ -7,7 +7,7 @@
         "webmyna": "dist/index.js"
     },
     "files": [
-        "bin/",
+        "dist/",
         "docs/",
         "src/"
     ],
