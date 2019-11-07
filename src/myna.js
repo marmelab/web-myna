@@ -16,7 +16,7 @@ import { MODE_RECORDER, MODE_PLAYER } from './modes.js';
  * @returns {Function} - The curried middleware
  */
 export const myna = apiConfig => (req, res, next) => {
-    const apiRecordingsPath = path.resolve(path.dirname(''), 'recordings', apiConfig.name);
+    const apiRecordingsPath = path.resolve(config.recordingsPath, apiConfig.name);
     if (!fs.existsSync(apiRecordingsPath) && config.mode === MODE_RECORDER) {
         fs.mkdirSync(apiRecordingsPath, parseInt('0777', 8));
     }

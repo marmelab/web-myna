@@ -15,6 +15,9 @@ start: ## Start server
 record: ## Start server in recorder mode
 	WEB_MYNA_MODE=recorder yarn run start
 
+start-cli: ## Start Web Myna in CLI
+	node --experimental-modules cli/index.js
+
 test: ## Run unit test
 	yarn run test
 

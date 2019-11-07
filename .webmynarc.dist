@@ -1,0 +1,13 @@
+{
+    // Path to the main rocordings folder, exemple 
+    // "recordingsPath": "./recordings",
+    "recordingsPath": "",
+    // An array of API configuration, exemple
+    // "apis": [
+    //     {
+    //        "name": "rick_morty",
+    //        "url": "https://rickandmortyapi.com/api"
+    //    }
+    // ]
+    "apis": []
+}
