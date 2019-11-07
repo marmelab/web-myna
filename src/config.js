@@ -87,7 +87,7 @@ const config = convict({
     recordingsPath: {
         doc: 'path to the main recording folder',
         format: String,
-        default: globalConfiguration.recordingsPath,
+        default: globalConfiguration.recordingsPath || '/tmp/webmyna',
         env: 'WEB_MYNA_RECORDINGS_PATH',
     },
 });
