@@ -1,4 +1,3 @@
-import signale from 'signale';
 import convict from 'convict';
 import rc from 'rc';
 
@@ -9,6 +8,39 @@ const isPlayerMode = processEnv['WEB_MYNA_MODE'] === MODE_PLAYER || !processEnv[
 
 const globalConfiguration = rc('webmyna', { apis: [], recordingsPath: null });
 
+/**
+ * return the token name as environment variable from api name
+ *
+ * @example api name: rick-and-morty => token name RICK_AND_MORTY_TOKEN
+ * @function
+ * @param {object} api the api object configuration
+ * @returns {string} The token name
+ */
+export const getApiTokenName = api => {
+    return api.name ? `${api.name.toUpperCase().replace(/-/g, '_')}_TOKEN` : 'fakeWebMynaTokenName';
+};
+
+/**
+ * Returns an array of missing token names from the environment variables
+ *
+ * @function
+ * @param {object[]} apis an array of configured apis
+ * @param {object} environment the environment from process.env
+ * @returns {string[]} an array of missing token name from environment variables
+ */
+export const getMissingEnvironmentTokens = (apis = globalConfiguration.apis, environment = processEnv) => {
+    let missingTokens = [];
+    apis.filter(api => api.requiresAuthentication)
+        .map(api => getApiTokenName(api))
+        .map(tokenName => {
+            if (!environment[tokenName]) {
+                missingTokens.push(tokenName);
+            }
+        });
+
+    return missingTokens;
+};
+
 convict.addFormat({
     name: 'apis',
     validate: (apis, schema) => {
@@ -16,12 +48,13 @@ convict.addFormat({
             throw new Error('must be of type Array');
         }
 
+        // if webmyna mode is recorder and api requires an authentication and token is present in environment variables
+        // we add token from environment variable in config
         apis.map((api, index) => {
-            const tokenName = api.name ? `${api.name.toUpperCase().replace(/-/g, '_')}_TOKEN` : null;
-            signale.debug(tokenName);
-            if (tokenName || isPlayerMode) {
-                const apiToken = processEnv[tokenName];
-                apis[index].token = isPlayerMode ? 'webMynaPlayerToken' : apiToken;
+            const tokenName = getApiTokenName(api);
+            const apiToken = processEnv[tokenName] || null;
+            if (apiToken && api.requiresAuthentication && !isPlayerMode) {
+                apis[index].token = apiToken;
             }
         });
 
@@ -49,10 +82,15 @@ const config = convict({
                 format: 'url',
                 default: null,
             },
+            requiresAuthentication: {
+                doc: 'Does the API require authentication or not',
+                format: Boolean,
+                default: false,
+            },
             token: {
                 doc: 'Value of the authorization token to add in http headers',
                 format: String,
-                default: null,
+                default: 'webMynaDefaultToken',
             },
             tokenKey: {
                 doc: 'Name of the http header for authentification',
