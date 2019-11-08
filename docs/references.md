@@ -1,7 +1,3 @@
----
-id: references
-title: References
----
 ## Functions
 
 <dl>

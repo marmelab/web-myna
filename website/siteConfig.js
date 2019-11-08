@@ -27,7 +27,7 @@ const siteConfig = {
     baseUrl: '/web-myna/', // Base URL for your project */
     projectName: 'web-myna',
     organizationName: 'marmelab',
-    cname: 'www.marmelab.com',
+    // cname: 'www.marmelab.com',
     // For top-level user or org sites, the organization is still the same.
     // e.g., for the https://JoelMarcey.github.io site, it would be set like...
     //   organizationName: 'JoelMarcey'
