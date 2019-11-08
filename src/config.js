@@ -17,7 +17,9 @@ const globalConfiguration = rc('webmyna', { apis: [], recordingsPath: null });
  * @returns {string} The token name
  */
 export const getApiTokenName = api => {
-    return api.name ? `${api.name.toUpperCase().replace(/-/g, '_')}_TOKEN` : 'fakeWebMynaTokenName';
+    return typeof api.name === 'string' && !!api.name
+        ? `${api.name.toUpperCase().replace(/-/g, '_')}_TOKEN`
+        : 'fakeWebMynaTokenName';
 };
 
 /**
