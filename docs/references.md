@@ -1,6 +1,12 @@
 ## Functions
 
 <dl>
+<dt><a href="#getApiTokenName">getApiTokenName(api)</a> ⇒ <code>string</code></dt>
+<dd><p>return the token name as environment variable from api name</p>
+</dd>
+<dt><a href="#getMissingEnvironmentTokens">getMissingEnvironmentTokens(apis, environment)</a> ⇒ <code>Array.&lt;string&gt;</code></dt>
+<dd><p>Returns an array of missing token names from the environment variables</p>
+</dd>
 <dt><a href="#transformBinaryToUtf8">transformBinaryToUtf8(value)</a> ⇒ <code>string</code></dt>
 <dd><p>Transform a Binay (Buffer) into string</p>
 </dd>
@@ -14,6 +20,35 @@
 <dd><p>Description of the WebMyna Middleware.</p>
 </dd>
 </dl>
+
+<a name="getApiTokenName"></a>
+
+## getApiTokenName(api) ⇒ <code>string</code>
+return the token name as environment variable from api name
+
+**Kind**: global function  
+**Returns**: <code>string</code> - The token name  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| api | <code>object</code> | the api object configuration |
+
+**Example**  
+```js
+api name: rick-and-morty => token name RICK_AND_MORTY_TOKEN
+```
+<a name="getMissingEnvironmentTokens"></a>
+
+## getMissingEnvironmentTokens(apis, environment) ⇒ <code>Array.&lt;string&gt;</code>
+Returns an array of missing token names from the environment variables
+
+**Kind**: global function  
+**Returns**: <code>Array.&lt;string&gt;</code> - an array of missing token name from environment variables  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apis | <code>Array.&lt;object&gt;</code> | an array of configured apis |
+| environment | <code>object</code> | the environment from process.env |
 
 <a name="transformBinaryToUtf8"></a>
 

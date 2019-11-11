@@ -1,8 +1,16 @@
 import signale from 'signale';
+import boxen from 'boxen';
 
-import { app } from './app.js';
-import config from './config.js';
+import * as appJs from './app.js';
+import config, { getMissingEnvironmentTokens, getMissingTokensMessage } from './config.js';
 
-app.listen(config.proxyPort, () => {
-    signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
-});
+const missingTokens = getMissingEnvironmentTokens();
+
+if (missingTokens.length) {
+    const message = getMissingTokensMessage(config, missingTokens);
+    signale.log(boxen(message, { padding: 1, margin: 1, borderColor: 'red', align: 'center' }));
+} else {
+    appJs.app.listen(config.proxyPort, () => {
+        signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
+    });
+}
