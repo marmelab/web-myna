@@ -6,9 +6,10 @@ import rc from 'rc';
 import signale from 'signale';
 import boxen from 'boxen';
 import fs from 'fs';
+import omit from 'lodash.omit';
 
 import { questions } from './questions.js';
-import config from '../src/config.js';
+import config, { getMissingEnvironmentTokens, getMissingTokensMessage } from '../src/config.js';
 import { app } from '../src/app.js';
 
 const clearWn = () => {
@@ -47,12 +48,7 @@ if (!globalConfiguration.config) {
                 signale.log(`You already have ${apis.length} api.s configured`);
             }
             const apiConfiguration = await questions.askApiConfiguration();
-            apis.push({
-                name: apiConfiguration.name,
-                url: apiConfiguration.url,
-                tokenKey: apiConfiguration.tokenKey || 'authorization',
-                tokenPrefix: apiConfiguration.tokenPrefix || 'Bearer',
-            });
+            apis.push(omit(apiConfiguration, ['continue']));
             configureApi = apiConfiguration.continue;
         }
 
@@ -80,13 +76,21 @@ if (!globalConfiguration.config) {
 
     run();
 } else {
-    app.listen(config.proxyPort, () => {
-        signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
-    });
+    const missingTokens = getMissingEnvironmentTokens();
+
+    if (missingTokens.length) {
+        const message = getMissingTokensMessage(config, missingTokens);
+        signale.log(boxen(message, { padding: 1, margin: 1, borderColor: 'red', align: 'center' }));
+        process.exit();
+    } else {
+        app.listen(config.proxyPort, () => {
+            signale.info(`Web Myna is starded on port ${config.proxyPort} in environment ${config.env}`);
+        });
+    }
 }
 
 process.on('SIGINT', function() {
     clear();
     signale.log(chalk.yellow(figlet.textSync('Bye', { horizontalLayout: 'full' })));
-    process.exit(1);
+    process.exit();
 });

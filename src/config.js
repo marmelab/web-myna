@@ -43,6 +43,32 @@ export const getMissingEnvironmentTokens = (apis = globalConfiguration.apis, env
     return missingTokens;
 };
 
+/**
+ * Return readable message about missing tokens in process.env
+ *
+ * @function
+ * @param {object} config with apis
+ * @param {string[]} missingTokens an array of missing token names
+ * @returns {string} the message
+ */
+export const getMissingTokensMessage = (config, missingTokens) => {
+    const missingApisWithAuthentication = config.apis
+        .filter(api => missingTokens.includes(getApiTokenName(api)))
+        .map(api => api.name);
+    const isPlural = missingApisWithAuthentication.length > 1;
+    return `
+You have declared ${missingApisWithAuthentication.length} api${
+        isPlural ? 's' : ''
+    } as requiring an authentication token: ${missingApisWithAuthentication.join(', ')}.
+
+You must therefore declare the following token${isPlural ? 's' : ''} as an environment variable: ${missingTokens
+        .map(
+            token => `
+ => ${token}`,
+        )
+        .join('')}`;
+};
+
 convict.addFormat({
     name: 'apis',
     validate: (apis, schema) => {

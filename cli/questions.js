@@ -65,7 +65,7 @@ export const questions = {
             },
             {
                 type: 'confirm',
-                name: 'needToken',
+                name: 'requiresAuthentication',
                 message: 'Does the API need an authentication token?',
             },
             {
@@ -73,14 +73,14 @@ export const questions = {
                 name: 'tokenKey',
                 message: 'What is the name of the http header with the authentication token?',
                 default: 'authorization',
-                when: value => value.needToken,
+                when: value => value.requiresAuthentication,
             },
             {
                 type: 'input',
                 name: 'tokenPrefix',
                 message: 'Should the token be prefixed in the header?',
                 default: 'Bearer',
-                when: value => value.needToken,
+                when: value => value.requiresAuthentication,
             },
             {
                 type: 'confirm',
