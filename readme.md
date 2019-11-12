@@ -58,5 +58,5 @@ To learn more about the contributions to this project, consult the [contribution
 
 ## License
 
-web-myna is licensed under the [mit license](license), courtesy of [Arte]() and [Marmelab](http://marmelab.com).
+web-myna is licensed under the [mit license](license), courtesy of [Arte](https://github.com/ArteGEIE) and [Marmelab](http://marmelab.com).
 
