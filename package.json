@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "boxen": "4.1.0",
-        "chalk": "2.4.2",
+        "chalk": "3.0.0",
         "clear": "0.1.0",
         "clui": "0.3.6",
         "convict": "5.2.0",
@@ -49,27 +49,27 @@
         "md5": "2.2.1",
         "minimist": "1.2.0",
         "nodemon": "1.19.4",
-        "query-string": "6.8.3",
+        "query-string": "6.9.0",
         "rc": "1.2.8",
         "signale": "1.4.0"
     },
     "devDependencies": {
-        "@babel/core": "7.7.0",
+        "@babel/core": "7.7.2",
         "@babel/preset-env": "7.7.1",
         "babel-eslint": "10.0.3",
         "babel-jest": "24.9.0",
         "docusaurus-init": "1.14.0",
         "eslint": "6.6.0",
         "eslint-config-prettier": "6.5.0",
-        "eslint-plugin-jest": "23.0.2",
-        "eslint-plugin-jsdoc": "17.1.0",
+        "eslint-plugin-jest": "23.0.4",
+        "eslint-plugin-jsdoc": "18.0.1",
         "eslint-plugin-prettier": "3.1.1",
         "husky": "3.0.9",
         "jest": "24.9.0",
         "jsdoc-to-markdown": "5.0.2",
-        "lint-staged": "9.4.2",
+        "lint-staged": "9.4.3",
         "parcel-bundler": "1.12.4",
         "parcel-plugin-shebang": "1.2.8",
-        "prettier": "1.18.2"
+        "prettier": "1.19.1"
     }
 }
