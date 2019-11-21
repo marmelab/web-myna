@@ -1,4 +1,4 @@
-FROM node:12.12.0-alpine AS builder
+FROM node:12.13.0-alpine AS builder
 
 ENV NODE_ENV production
 
@@ -15,7 +15,7 @@ WORKDIR /app
 RUN yarn install --non-interactive --pure-lockfile --production && yarn cache clean && /tmp/node-prune
 
 # Starts a new build stage which will be the final image
-FROM node:12.12.0-alpine
+FROM node:12.13.0-alpine
 
 ENV NODE_ENV production
 
