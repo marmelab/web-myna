@@ -12,6 +12,7 @@
         ],
         "Explanations": [
             "explanation/explanation-environment-variables",
+            "explanation/explanation-har",
             "explanation/explanation-middleware",
             "explanation/explanation-reverse-proxy",
             "explanation/explanation-cli"

@@ -11,6 +11,9 @@
       "explanation/explanation-environment-variables": {
         "title": "Why so many environment variables?"
       },
+      "explanation/explanation-har": {
+        "title": "what is .har format?"
+      },
       "explanation/explanation-middleware": {
         "title": "Webmyna is a middleware"
       },
@@ -39,14 +42,14 @@
         "title": "References"
       },
       "tutorials/tuto-quick-start": {
-        "title": "Introduction",
-        "sidebar_label": "Introduction"
+        "title": "Quick start",
+        "sidebar_label": "Quick start"
       }
     },
     "links": {
-      "Introduction": "Introduction",
+      "Quick start": "Quick start",
       "Guides": "Guides",
-      "Explanation": "Explanation",
+      "Explanations": "Explanations",
       "References": "References"
     },
     "categories": {
