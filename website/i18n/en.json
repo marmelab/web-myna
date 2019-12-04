@@ -5,14 +5,54 @@
     "previous": "Previous",
     "tagline": "Record then emulate your api.s for testing and development",
     "docs": {
-      "references": {
-        "title": "references"
+      "explanation/explanation-cli": {
+        "title": "Webmyna from CLI"
+      },
+      "explanation/explanation-environment-variables": {
+        "title": "Why so many environment variables?"
+      },
+      "explanation/explanation-middleware": {
+        "title": "Webmyna is a middleware"
+      },
+      "explanation/explanation-reverse-proxy": {
+        "title": "Webmyna works as a reverse proxy"
+      },
+      "how-to/howto-manage-apis": {
+        "title": "Manage APIS"
+      },
+      "how-to/howto-authentication": {
+        "title": "Manage API authentication"
+      },
+      "how-to/howto-contribute": {
+        "title": "Contribute to the projet"
+      },
+      "how-to/howto-docker": {
+        "title": "Using Webmyna with Docker Compose"
+      },
+      "how-to/howto-environment-variables": {
+        "title": "Environment variables"
+      },
+      "how-to/express": {
+        "title": "how-to/express"
+      },
+      "references/references": {
+        "title": "References"
+      },
+      "tutorials/tuto-quick-start": {
+        "title": "Introduction",
+        "sidebar_label": "Introduction"
       }
     },
     "links": {
-      "Documentation": "Documentation"
+      "Introduction": "Introduction",
+      "Guides": "Guides",
+      "Explanation": "Explanation",
+      "References": "References"
     },
     "categories": {
+      "Tutorials": "Tutorials",
+      "Guides": "Guides",
+      "Explanations": "Explanations",
       "References": "References"
     }
   },

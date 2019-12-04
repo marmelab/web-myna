@@ -34,7 +34,10 @@ const siteConfig = {
 
     // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
-        {doc: 'references', label: 'Documentation'},
+        {doc: 'tutorials/tuto-quick-start', label: 'Introduction'},
+        {doc: 'how-to/howto-authentication', label: 'Guides'},
+        {doc: 'explanation/explanation-environment-variables', label: 'Explanation'},
+        {doc: 'references/references', label: 'References'},
         // { doc: 'doc4', label: 'API' },
         // { page: 'help', label: 'Help' },
         // { blog: false, label: 'Blog' },
@@ -91,7 +94,7 @@ const siteConfig = {
 
     // For sites with a sizable amount of content, set collapsible to true.
     // Expand/collapse the links and subcategories under categories.
-    // docsSideNavCollapsible: true,
+    docsSideNavCollapsible: true,
 
     // Show documentation's last contributor's name.
     // enableUpdateBy: true,
