@@ -1,0 +1,1 @@
+# Webmyna as CLI
