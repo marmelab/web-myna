@@ -51,6 +51,7 @@
         "nodemon": "2.0.2",
         "query-string": "6.9.0",
         "rc": "1.2.8",
+        "serialize-to-js": "3.0.1",
         "signale": "1.4.0"
     },
     "devDependencies": {
