@@ -3,20 +3,6 @@
         "Tutorials": [
             "tutorials/tuto-quick-start"
         ],
-        "Guides": [
-            "how-to/howto-authentication",
-            "how-to/howto-manage-apis",
-            "how-to/howto-environment-variables",
-            "how-to/howto-docker",
-            "how-to/howto-contribute"
-        ],
-        "Explanations": [
-            "explanation/explanation-environment-variables",
-            "explanation/explanation-har",
-            "explanation/explanation-middleware",
-            "explanation/explanation-reverse-proxy",
-            "explanation/explanation-cli"
-        ],
         "References": [
             "references/references"
         ]

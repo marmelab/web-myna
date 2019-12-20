@@ -47,6 +47,16 @@ class HomeSplash extends React.Component {
                 <div className="inner">
                     <ProjectTitle siteConfig={siteConfig} />
                 </div>
+                <h3>Why ?</h3>
+                <p>For a long time, the idea of having a system to record API calls to use them in functional or e2e tests has been making its mark. We have tried several tools:</p>
+
+                <p> * Polly.js with its REST recording. But Polly imposes a lot of configuration, and leaves you too dependent on the library in the tests.<br />
+                * RestBird. The project is still a little young, the documentation still too incomplete. And above all, you can only launch the mock server on localhost, which is a problem within docker-compose.<br />
+                * Http Toolkit. You have to pay to enjoy all the features, and it does not really work as an API server (mocked), but more as a request interceptor.<br />
+                * Mock server. Probably the most attractive project, but it seems really too complicated!</p>
+
+                <p>So no project that really matched the need.<br />
+                Web Myna will do it</p>
             </SplashContainer>
         );
     }

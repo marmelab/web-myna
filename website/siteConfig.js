@@ -35,8 +35,8 @@ const siteConfig = {
     // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
         {doc: 'tutorials/tuto-quick-start', label: 'Quick start'},
-        {doc: 'how-to/howto-authentication', label: 'Guides'},
-        {doc: 'explanation/explanation-environment-variables', label: 'Explanations'},
+        // {doc: 'how-to/howto-authentication', label: 'Guides'},
+        // {doc: 'explanation/explanation-environment-variables', label: 'Explanations'},
         {doc: 'references/references', label: 'References'},
         // { doc: 'doc4', label: 'API' },
         // { page: 'help', label: 'Help' },
