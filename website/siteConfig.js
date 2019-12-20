@@ -34,7 +34,10 @@ const siteConfig = {
 
     // For no header links in the top nav bar -> headerLinks: [],
     headerLinks: [
-        {doc: 'references', label: 'Documentation'},
+        {doc: 'tutorials/tuto-quick-start', label: 'Quick start'},
+        {doc: 'how-to/howto-authentication', label: 'Guides'},
+        {doc: 'explanation/explanation-environment-variables', label: 'Explanations'},
+        {doc: 'references/references', label: 'References'},
         // { doc: 'doc4', label: 'API' },
         // { page: 'help', label: 'Help' },
         // { blog: false, label: 'Blog' },
@@ -44,7 +47,8 @@ const siteConfig = {
     users,
 
     /* path to images for header/footer */
-    headerIcon: 'img/logoMarmelabWhite.png',
+    // headerIcon: 'img/logoMarmelabWhite.png',
+    headerIcon: 'img/webmyna.png',
     footerIcon: 'img/logo.png',
     favicon: 'img/favicon.ico',
 
@@ -69,7 +73,7 @@ const siteConfig = {
     */
 
     // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-    copyright: `Copyright © ${new Date().getFullYear()} Marmelab`,
+    copyright: `Copyleft © ${new Date().getFullYear()} Marmelab`,
 
     highlight: {
         // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -91,7 +95,7 @@ const siteConfig = {
 
     // For sites with a sizable amount of content, set collapsible to true.
     // Expand/collapse the links and subcategories under categories.
-    // docsSideNavCollapsible: true,
+    docsSideNavCollapsible: true,
 
     // Show documentation's last contributor's name.
     // enableUpdateBy: true,

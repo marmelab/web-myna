@@ -13,6 +13,12 @@ const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
+const Logo = props => (
+    <div className="projectLogo">plop
+        <img src="img/logo.png" alt="Web Myna Logo" />
+    </div>
+);
+
 class HomeSplash extends React.Component {
     render() {
         const { siteConfig, language = '' } = this.props;
@@ -29,12 +35,6 @@ class HomeSplash extends React.Component {
             </div>
         );
 
-        const Logo = props => (
-            <div className="projectLogo">
-                <img src={props.img_src} alt="Web Myna Logo" />
-            </div>
-        );
-
         const ProjectTitle = () => (
             <h2 className="projectTitle">
                 {siteConfig.title}
@@ -44,7 +44,6 @@ class HomeSplash extends React.Component {
 
         return (
             <SplashContainer>
-                <Logo img_src={`${baseUrl}img/webmyna.png`} />
                 <div className="inner">
                     <ProjectTitle siteConfig={siteConfig} />
                 </div>
@@ -60,7 +59,10 @@ class Index extends React.Component {
         return (
             <div>
                 <HomeSplash siteConfig={siteConfig} language={language} />
-                <div className="mainContainer"></div>
+                <Logo config={siteConfig}/>
+                <div className="mainContainer">
+
+                </div>
             </div>
         );
     }
