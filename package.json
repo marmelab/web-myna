@@ -47,7 +47,7 @@
         "inquirer": "7.0.1",
         "lodash.omit": "4.5.0",
         "md5": "2.2.1",
-        "minimist": "1.2.0",
+        "minimist": "1.2.3",
         "nodemon": "2.0.2",
         "query-string": "6.9.0",
         "rc": "1.2.8",
